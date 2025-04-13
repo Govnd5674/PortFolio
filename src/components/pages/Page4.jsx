@@ -7,22 +7,22 @@ const Page4 = () => {
   const items = [
     {
       image:
-        "https://raw.githubusercontent.com/Govnd5674/PortFolio/main/src/assets/Project%20Images/%20%20(2).png",
-      link: "https://google.com/",
-      title: "Project 1",
-      description: "React Js Apple Clone, Project",
-    },
-    {
-      image:
         "https://raw.githubusercontent.com/Govnd5674/PortFolio/main/src/assets/Project%20Images/%20%20(1).png",
-      link: "https://google.com/",
-      title: "Project 2",
+      link: "https://github.com/Govnd5674",
+      title: "Project 1",
       description: "Responsive Web-Application",
     },
     {
       image:
+        "https://raw.githubusercontent.com/Govnd5674/PortFolio/main/src/assets/Project%20Images/%20%20(2).png",
+      link: "https://github.com/Govnd5674",
+      title: "Project 2",
+      description: "React Js Apple Clone, Project",
+    },
+    {
+      image:
         "https://raw.githubusercontent.com/Govnd5674/PortFolio/main/src/assets/Project%20Images/%20%20(3).png",
-      link: "https://google.com/",
+      link: "https://github.com/Govnd5674",
       title: "Project 3",
       description: "GSAP Animation",
     },
@@ -59,12 +59,12 @@ const Page4 = () => {
   }, []);
 
   return (
-    <div className="h-[100vh]" ref={containerRef}>
+    <div id="projects" className="min-h-screen h-full" ref={containerRef}>
       {loading ? (
-        <div className="flex flex-col items-center justify-center h-full bg-gray-950">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950">
           <SplitText
             text="PROJECTS ..."
-            className="text-8xl text-gray-500 font-Mogra font-bold mb-12"
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-gray-500 font-Mogra font-bold mb-8 md:mb-12"
             delay={100}
             animationFrom={{ opacity: 0, transform: "translateY(50px)" }}
             animationTo={{ opacity: 1, transform: "translateY(0)" }}
@@ -74,8 +74,12 @@ const Page4 = () => {
         <div className={styles.fadeInContainer}>
           <div className="bg-gray-950">
             <div className="bg-gray-950 relative">
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-gray-950 to-transparent z-10"></div>
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-gray-950 to-transparent z-10"></div>
+              <div className="pointer-events-none fixed inset-x-0 bottom-0 z-10">
+                <div className="h-16 xs:h-20 sm:h-24 md:h-32 bg-gradient-to-t from-gray-950 to-transparent"></div>
+              </div>
+              <div className="pointer-events-none fixed inset-x-0 top-0 z-10">
+                <div className="h-16 xs:h-20 sm:h-24 md:h-32 bg-gradient-to-b from-gray-950 to-transparent"></div>
+              </div>
               <InfiniteMenu items={items} />
             </div>
           </div>

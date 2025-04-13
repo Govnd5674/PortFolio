@@ -1114,6 +1114,15 @@ export default function InfiniteMenu({ items = [] }) {
   const canvasRef = useRef(null);
   const [activeItem, setActiveItem] = useState(null);
   const [isMoving, setIsMoving] = useState(false);
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenHeight(window.innerHeight);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -1159,93 +1168,141 @@ export default function InfiniteMenu({ items = [] }) {
 
   return (
     <div className="relative w-full h-full bg-gray-950">
-      <canvas
-        id="infinite-grid-menu-canvas"
-        ref={canvasRef}
-        className="cursor-grab w-full h-full overflow-hidden relative outline-none active:cursor-grabbing bg-gray-950"
-      />
-
-      {activeItem && (
-        <>
-          <h2
-            className={`
-          select-none
-          absolute
-          font-black
-          [font-size:4rem]
-          left-[15%]
-          top-1/2
-          transform
-          translate-x-[-10%]
-          -translate-y-1/2
-          transition-all
-          text-gray-500
-          ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-          ${
-            isMoving
-              ? "opacity-0 pointer-events-none duration-[100ms]"
-              : "opacity-100 pointer-events-auto duration-[500ms]"
-          }
-        `}
-          >
-            {activeItem.title}
-          </h2>
-
-          <p
-            className={`
-          select-none
-          absolute
-          max-w-[10ch]
-          text-[1.5rem]
-          top-1/2
-          right-[15%]
-          text-gray-500
-          transition-all
-          ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-          ${
-            isMoving
-              ? "opacity-0 pointer-events-none duration-[100ms] translate-x-[-60%] -translate-y-1/2"
-              : "opacity-100 pointer-events-auto duration-[500ms] translate-x-[-90%] -translate-y-1/2"
-          }
-        `}
-          >
-            {activeItem.description}
-          </p>
-
+      <div className="w-full h-[80vh] xs:h-[85vh] sm:h-[95vh] md:h-[95vh] lg:h-screen">
+        {activeItem && (
           <div
-            onClick={handleButtonClick}
             className={`
-          absolute
-          left-1/2
-          z-10
-          w-[60px]
-          h-[60px]
-          grid
-          place-items-center
-          bg-gradient-to-br
-          from-[#804D3E]
-          to-[#7E497D]
-          border-[5px]
-          border-gray-950
-          rounded-full
-          cursor-pointer
-          hover:from-[#7E497D]
-          hover:to-[#804D3E]
-          transition-all
-          ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
-          ${
-            isMoving
-              ? "bottom-[-80px] opacity-0 pointer-events-none duration-[100ms] scale-0 -translate-x-1/2"
-              : "bottom-[3.8em] opacity-100 pointer-events-auto duration-[500ms] scale-100 -translate-x-1/2"
-          }
-        `}
+            absolute z-10 md:hidden
+            ${
+              screenHeight <= 720
+                ? "right-0 top-1/3 w-[250px] pr-20"
+                : "top-[15vh] left-0 w-full"
+            }
+          `}
           >
-            <p className="select-none relative bg-gradient-to-br from-[#804D3E] to-[#7E497D] bg-clip-text text-gray-950 bottom-[3px] right-[1px] text-[35px]">
-              &#x2197;
+            <h2
+              className={`
+              font-Mogra font-bold text-xl xs:text-2xl
+              text-gray-500 transition-all duration-300
+              ${screenHeight <= 720 ? "text-right" : "text-center px-4"}
+              ${isMoving ? "opacity-0" : "opacity-100"}
+              bg-black py-2 px-4 rounded-lg
+            `}
+            >
+              {activeItem.title}
+            </h2>
+          </div>
+        )}
+
+        <canvas
+          id="infinite-grid-menu-canvas"
+          ref={canvasRef}
+          className="cursor-grab w-full h-full overflow-hidden relative outline-none active:cursor-grabbing bg-gray-950"
+        />
+
+        {activeItem && (
+          <div
+            className={`
+            absolute z-10 md:hidden
+            ${
+              screenHeight <= 720
+                ? "left-0 bottom-1/3 w-[250px] pl-20"
+                : "bottom-[15vh] left-0 w-full"
+            }
+          `}
+          >
+            <p
+              className={`
+              font-Mogra text-sm xs:text-base
+              text-gray-500 transition-all duration-100
+              ${
+                screenHeight <= 720
+                  ? "text-left"
+                  : "text-center px-6 max-w-[280px] mx-auto"
+              }
+              ${isMoving ? "opacity-0" : "opacity-100"}
+              bg-black py-2 px-4 rounded-lg
+            `}
+            >
+              {activeItem.description}
             </p>
           </div>
-        </>
-      )}
+        )}
+
+        {/* Desktop layout - only show on md and up */}
+        {activeItem && (
+          <div className="absolute inset-0 pointer-events-none hidden md:block">
+            <div className="relative h-full w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12">
+              <h2
+                className={`
+              select-none absolute font-black
+              text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4rem]
+              left-[2%] xs:left-[5%] sm:left-[10%] md:left-[15%]
+              top-[45%] sm:top-1/2
+              transform
+              translate-x-0 xs:translate-x-[-5%] sm:translate-x-[-10%]
+              -translate-y-1/2
+              transition-all text-gray-500
+              ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+              bg-black py-2 px-4 rounded-lg
+              ${
+                isMoving
+                  ? "opacity-0 pointer-events-none duration-[100ms]"
+                  : "opacity-100 pointer-events-auto duration-[500ms]"
+              }
+            `}
+              >
+                {activeItem.title}
+              </h2>
+
+              <p
+                className={`
+              select-none absolute
+              max-w-[18ch] xs:max-w-[15ch] sm:max-w-[12ch] md:max-w-[10ch]
+              text-sm xs:text-base sm:text-xl md:text-2xl lg:text-[1.5rem]
+              top-[55%] sm:top-1/2
+              right-[2%] xs:right-[5%] sm:right-[10%] md:right-[15%]
+              text-gray-500 transition-all
+              ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+              bg-black py-2 px-4 rounded-lg
+              ${
+                isMoving
+                  ? "opacity-0 pointer-events-none duration-[100ms] translate-x-[-20%] xs:translate-x-[-40%] sm:translate-x-[-50%] md:translate-x-[-60%] -translate-y-1/2"
+                  : "opacity-100 pointer-events-auto duration-[500ms] translate-x-[-50%] xs:translate-x-[-70%] sm:translate-x-[-80%] md:translate-x-[-90%] -translate-y-1/2"
+              }
+            `}
+              >
+                {activeItem.description}
+              </p>
+
+              <div className="pointer-events-auto">
+                <div
+                  onClick={handleButtonClick}
+                  className={`
+                absolute left-1/2 z-10
+                w-[35px] h-[35px] xs:w-[40px] xs:h-[40px] sm:w-[50px] sm:h-[50px] md:w-[60px] md:h-[60px]
+                grid place-items-center
+                bg-gradient-to-br from-[#804D3E] to-[#7E497D]
+                border-[2px] xs:border-[3px] sm:border-[4px] md:border-[5px] border-gray-950
+                rounded-full cursor-pointer
+                hover:from-[#7E497D] hover:to-[#804D3E]
+                transition-all ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+                ${
+                  isMoving
+                    ? "bottom-[-80px] opacity-0 pointer-events-none duration-[100ms] scale-0 -translate-x-1/2"
+                    : "bottom-[1em] xs:bottom-[2em] sm:bottom-[3em] md:bottom-[3.8em] opacity-100 pointer-events-auto duration-[500ms] scale-100 -translate-x-1/2"
+                }
+              `}
+                >
+                  <p className="select-none relative bg-gradient-to-br from-[#804D3E] to-[#7E497D] bg-clip-text text-gray-950 bottom-[1px] xs:bottom-[2px] sm:bottom-[2.5px] md:bottom-[3px] right-[1px] text-[20px] xs:text-[25px] sm:text-[30px] md:text-[35px]">
+                    &#x2197;
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -44,6 +44,11 @@ export default {
         300: "300ms",
         500: "500ms",
       },
+      screens: {
+        hd: "1280px", // 720p
+        fhd: "1920px", // 1080p
+        "2k": "2560px", // 1440p
+      },
     },
   },
   variants: {
