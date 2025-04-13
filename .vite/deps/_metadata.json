@@ -1,0 +1,157 @@
+{
+  "hash": "f0298285",
+  "configHash": "a59de134",
+  "lockfileHash": "8a0c5add",
+  "browserHash": "6c519128",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "5aee2234",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "88a25eb7",
+      "needsInterop": true
+    },
+    "react-spinners/BarLoader": {
+      "src": "../../node_modules/react-spinners/BarLoader.js",
+      "file": "react-spinners_BarLoader.js",
+      "fileHash": "b1cfdde7",
+      "needsInterop": true
+    },
+    "framer-motion": {
+      "src": "../../node_modules/framer-motion/dist/es/index.mjs",
+      "file": "framer-motion.js",
+      "fileHash": "ed10896b",
+      "needsInterop": false
+    },
+    "@splinetool/react-spline": {
+      "src": "../../node_modules/@splinetool/react-spline/dist/react-spline.js",
+      "file": "@splinetool_react-spline.js",
+      "fileHash": "29224e4d",
+      "needsInterop": false
+    },
+    "gsap": {
+      "src": "../../node_modules/gsap/index.js",
+      "file": "gsap.js",
+      "fileHash": "4023e901",
+      "needsInterop": false
+    },
+    "gsap/ScrollTrigger": {
+      "src": "../../node_modules/gsap/ScrollTrigger.js",
+      "file": "gsap_ScrollTrigger.js",
+      "fileHash": "213ab07a",
+      "needsInterop": false
+    },
+    "@react-spring/web": {
+      "src": "../../node_modules/@react-spring/web/dist/react-spring_web.modern.mjs",
+      "file": "@react-spring_web.js",
+      "fileHash": "93bb3c8a",
+      "needsInterop": false
+    },
+    "@react-three/fiber": {
+      "src": "../../node_modules/@react-three/fiber/dist/react-three-fiber.esm.js",
+      "file": "@react-three_fiber.js",
+      "fileHash": "9645898d",
+      "needsInterop": false
+    },
+    "@react-three/drei": {
+      "src": "../../node_modules/@react-three/drei/index.js",
+      "file": "@react-three_drei.js",
+      "fileHash": "2810694a",
+      "needsInterop": false
+    },
+    "@react-three/rapier": {
+      "src": "../../node_modules/@react-three/rapier/dist/react-three-rapier.esm.js",
+      "file": "@react-three_rapier.js",
+      "fileHash": "403a8531",
+      "needsInterop": false
+    },
+    "meshline": {
+      "src": "../../node_modules/meshline/dist/index.js",
+      "file": "meshline.js",
+      "fileHash": "bc097766",
+      "needsInterop": false
+    },
+    "three": {
+      "src": "../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "f87f8416",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "boolean-XKMDEG6K": {
+      "file": "boolean-XKMDEG6K.js"
+    },
+    "howler-HFV3EF3T": {
+      "file": "howler-HFV3EF3T.js"
+    },
+    "opentype-JBJQJ6JQ": {
+      "file": "opentype-JBJQJ6JQ.js"
+    },
+    "ui-QGPUGPOQ": {
+      "file": "ui-QGPUGPOQ.js"
+    },
+    "gaussian-splat-compression-RZAEWTTM": {
+      "file": "gaussian-splat-compression-RZAEWTTM.js"
+    },
+    "hls-IBBMWXO7": {
+      "file": "hls-IBBMWXO7.js"
+    },
+    "vision_bundle-YUWLS7YX": {
+      "file": "vision_bundle-YUWLS7YX.js"
+    },
+    "rapier.es-RTMEMMY2": {
+      "file": "rapier__es-RTMEMMY2.js"
+    },
+    "chunk-Y5A7JFWI": {
+      "file": "chunk-Y5A7JFWI.js"
+    },
+    "chunk-3TT3DUWU": {
+      "file": "chunk-3TT3DUWU.js"
+    },
+    "chunk-L2GTR7R2": {
+      "file": "chunk-L2GTR7R2.js"
+    },
+    "chunk-S6YRQGKR": {
+      "file": "chunk-S6YRQGKR.js"
+    },
+    "chunk-WHLQOB5A": {
+      "file": "chunk-WHLQOB5A.js"
+    },
+    "chunk-BRDF3U2E": {
+      "file": "chunk-BRDF3U2E.js"
+    },
+    "navmesh-23L2OVGQ": {
+      "file": "navmesh-23L2OVGQ.js"
+    },
+    "physics-XW3ZW3JP": {
+      "file": "physics-XW3ZW3JP.js"
+    },
+    "process-4OA3RB7F": {
+      "file": "process-4OA3RB7F.js"
+    },
+    "chunk-HPE7SYJ6": {
+      "file": "chunk-HPE7SYJ6.js"
+    },
+    "chunk-RKK2FJ3C": {
+      "file": "chunk-RKK2FJ3C.js"
+    },
+    "chunk-MKRXJMYZ": {
+      "file": "chunk-MKRXJMYZ.js"
+    },
+    "chunk-KGCY6Y3V": {
+      "file": "chunk-KGCY6Y3V.js"
+    },
+    "chunk-QTVD6AVW": {
+      "file": "chunk-QTVD6AVW.js"
+    },
+    "chunk-PR4QN5HX": {
+      "file": "chunk-PR4QN5HX.js"
+    }
+  }
+}

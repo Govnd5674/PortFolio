@@ -1,0 +1,89 @@
+.tracking-in-expand-fwd-bottom {
+  -webkit-animation: tracking-in-expand-fwd-bottom 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: tracking-in-expand-fwd-bottom 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@-webkit-keyframes tracking-in-expand-fwd-bottom {
+  0% {
+    letter-spacing: -0.2em;
+    transform: translateY(200px) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    letter-spacing: normal;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-expand-fwd-bottom {
+  0% {
+    letter-spacing: -0.2em;
+    transform: translateY(200px) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    letter-spacing: normal;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.tracking-in-contract-bck {
+  animation: tracking-in-contract-bck 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  will-change: transform, opacity, letter-spacing;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 0.5em;
+    transform: translateY(-50px) scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    letter-spacing: normal;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+
+.text-focus-in {
+	-webkit-animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+@-webkit-keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+@keyframes text-focus-in {
+  0% {
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
+body {
+  cursor: url("/cursor.svg") 16 16, auto;
+}

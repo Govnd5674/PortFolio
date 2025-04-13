@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Mogra&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  cursor: url("/cursor.svg") 16 16, auto;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f1f1f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #804d3e, #7e497d);
+  border-radius: 5px;
+  border: 2px solid #1f1f1f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7e497d, #804d3e);
+}
