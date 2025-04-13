@@ -1,4 +1,5 @@
 import React from "react";
+import Ballpit from '../../blocks/Backgrounds/Ballpit/Ballpit';
 import {
   FaGithub,
   FaLinkedin,
@@ -23,12 +24,12 @@ const Page5 = () => {
     },
     {
       icon: <FaInstagram size={24} />,
-      url: "https://instagram.com/govind_chudari", // Replace with your Instagram profile
+      url: "https://instagram.com/govind_chudari",
       label: "Instagram",
     },
     {
       icon: <FaWhatsapp size={24} />,
-      url: "https://wa.me/919383860325", 
+      url: "https://wa.me/919383860325",
       label: "WhatsApp",
     },
     {
@@ -44,7 +45,8 @@ const Page5 = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-300">
+    <div>
+      <div className="h-[109vh] bg-gray-950 text-gray-300">
       {/* Contact Form Section */}
       <div className="max-w-4xl mx-auto pt-20 px-4 sm:px-6 lg:px-8">
         <div className="text-4xl font-bold text-center mb-20 mt-28 text-gray-500">
@@ -72,7 +74,7 @@ const Page5 = () => {
           </div>
           <textarea
             placeholder="Message"
-            rows={6}
+            rows={8}
             className="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-2 focus:outline-none focus:border-[#7E497D]"
           />
           <button
@@ -83,11 +85,12 @@ const Page5 = () => {
           </button>
         </form>
       </div>
+      
 
-      {/* Footer Section */}
-      <footer className="mt-20 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center space-y-4">
+
+      <footer className="mt-10 border-t border-gray-800">
+        <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center space-y-2">
             <div className="flex space-x-6">
               {socialLinks.map((link, index) => (
                 <a
@@ -106,10 +109,12 @@ const Page5 = () => {
               <p className="text-sm text-gray-500">
                 © {new Date().getFullYear()} Portfolio. Built with passion.
               </p>
+              
             </div>
           </div>
         </div>
       </footer>
+    </div>
     </div>
   );
 };

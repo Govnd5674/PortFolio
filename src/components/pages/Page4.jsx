@@ -6,28 +6,32 @@ import SplitText from "../../blocks/TextAnimations/SplitText/SplitText";
 const Page4 = () => {
   const items = [
     {
-      image: "https://picsum.photos/300/300?grayscale",
+      image:
+        "https://raw.githubusercontent.com/Govnd5674/PortFolio/main/src/assets/Project%20Images/%20%20(2).png",
       link: "https://google.com/",
-      title: "Item 1",
-      description: "This is pretty cool, right?",
+      title: "Project 1",
+      description: "React Js Apple Clone, Project",
     },
     {
-      image: "https://picsum.photos/400/400?grayscale",
+      image:
+        "https://raw.githubusercontent.com/Govnd5674/PortFolio/main/src/assets/Project%20Images/%20%20(1).png",
       link: "https://google.com/",
-      title: "Item 2",
-      description: "This is pretty cool, right?",
+      title: "Project 2",
+      description: "Responsive Web-Application",
     },
     {
-      image: "https://picsum.photos/500/500?grayscale",
+      image:
+        "https://raw.githubusercontent.com/Govnd5674/PortFolio/main/src/assets/Project%20Images/%20%20(3).png",
       link: "https://google.com/",
-      title: "Item 3",
-      description: "This is pretty cool, right?",
+      title: "Project 3",
+      description: "GSAP Animation",
     },
     {
-      image: "https://picsum.photos/600/600?grayscale",
-      link: "https://google.com/",
-      title: "Item 4",
-      description: "This is pretty cool, right?",
+      image:
+        "https://raw.githubusercontent.com/Govnd5674/PortFolio/main/src/assets/Project%20Images/%20%20(4).png",
+      link: "https://github.com/Govnd5674/Web-Projects/tree/main/Sid%20Cup%20Family",
+      title: "Project 4",
+      description: "Side Cup Clone",
     },
   ];
 
