@@ -4,23 +4,17 @@ import "./index.css";
 import "./animation.css";
 import Nav from "./components/nav";
 import WelcomeText from "./components/WelcomeText";
+import { pages } from "./router";
+import { loadComponent } from "./utils/componentLoader";
 
-// Optimized lazy loading with prefetch
-const Page1 = React.lazy(() =>
-  import(/* webpackPrefetch: true */ "./components/pages/Page1")
-);
-const Page2 = React.lazy(() =>
-  import(/* webpackPrefetch: true */ "./components/pages/Page2")
-);
-const Page3 = React.lazy(() =>
-  import(/* webpackPrefetch: true */ "./components/pages/Page3")
-);
-const Page4 = React.lazy(() =>
-  import(/* webpackPrefetch: true */ "./components/pages/Page4")
-);
-const Page5 = React.lazy(() =>
-  import(/* webpackPrefetch: true */ "./components/pages/Page5")
-);
+// Dynamic imports with chunk names
+const PageComponents = {
+  Page1: React.lazy(() => loadComponent("Page1")),
+  Page2: React.lazy(() => loadComponent("Page2")),
+  Page3: React.lazy(() => loadComponent("Page3")),
+  Page4: React.lazy(() => loadComponent("Page4")),
+  Page5: React.lazy(() => loadComponent("Page5")),
+};
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -117,21 +111,19 @@ const App = () => {
           <div className="w-full">
             <Nav />
             <div className="flex flex-col">
-              {[Page1, Page2, Page3, Page4, Page5].map(
-                (PageComponent, index) => (
-                  <div key={index} data-component={`Page${index + 1}`}>
-                    <Suspense
-                      fallback={
-                        <div className="min-h-screen flex items-center justify-center">
-                          <BarLoader color="#99a1af" size={15} />
-                        </div>
-                      }
-                    >
-                      <PageComponent />
-                    </Suspense>
-                  </div>
-                )
-              )}
+              {Object.entries(pages).map(([name, Component]) => (
+                <div key={name} data-component={name}>
+                  <Suspense
+                    fallback={
+                      <div className="min-h-screen flex items-center justify-center">
+                        <BarLoader color="#99a1af" size={15} />
+                      </div>
+                    }
+                  >
+                    <Component />
+                  </Suspense>
+                </div>
+              ))}
             </div>
             <button
               onClick={() =>
