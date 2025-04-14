@@ -47,12 +47,12 @@ export default defineConfig({
               cacheName: "github-images",
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 7, // 1 week
+                maxAgeSeconds: 60 * 60 * 24 * 7,
               },
             },
           },
         ],
-        maximumFileSizeToCacheInBytes: 8000000, // Increased to 8MB
+        maximumFileSizeToCacheInBytes: 10000000,
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
       },
     }),
@@ -91,10 +91,37 @@ export default defineConfig({
     sourcemap: false,
     minify: "terser",
     cssMinify: true,
+    chunkSizeWarningLimit: 5000, // 5MB chunk size limit
     rollupOptions: {
-      output: {
-        inlineDynamicImports: true,
+      input: {
+        main: "./index.html",
       },
+      output: {
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split(".");
+          const ext = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+            return `assets/images/[name]-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        },
+        entryFileNames: "assets/[name]-[hash].js",
+        inlineDynamicImports: false,
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("three")) return "three-vendor";
+            if (id.includes("react")) return "react-vendor";
+            if (id.includes("@splinetool")) return "spline-vendor";
+            return "vendors";
+          }
+        },
+      },
+    },
+    assetsInlineLimit: 4096,
+  },
+  resolve: {
+    alias: {
+      "@assets": "/src/assets",
     },
   },
   optimizeDeps: {

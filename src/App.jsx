@@ -5,7 +5,6 @@ import "./animation.css";
 import Nav from "./components/nav";
 import WelcomeText from "./components/WelcomeText";
 import { pages } from "./router";
-import { loadComponent } from "./utils/componentLoader";
 
 // Dynamic imports with chunk names
 const PageComponents = {
