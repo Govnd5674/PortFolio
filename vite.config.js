@@ -84,11 +84,11 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/",
+  base: '',  // Change from "/" to empty string
   build: {
     outDir: "dist",
     assetsDir: "assets",
-    sourcemap: false,
+    sourcemap: true, // Enable sourcemaps for debugging
     minify: "terser",
     cssMinify: true,
     chunkSizeWarningLimit: 5000, // 5MB chunk size limit
@@ -106,15 +106,8 @@ export default defineConfig({
           return `assets/[name]-[hash][extname]`;
         },
         entryFileNames: "assets/[name]-[hash].js",
-        inlineDynamicImports: false,
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (id.includes("three")) return "three-vendor";
-            if (id.includes("react")) return "react-vendor";
-            if (id.includes("@splinetool")) return "spline-vendor";
-            return "vendors";
-          }
-        },
+        inlineDynamicImports: true, // Change to true for single bundle
+        manualChunks: undefined // Remove manual chunks
       },
     },
     assetsInlineLimit: 4096,

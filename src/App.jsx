@@ -15,6 +15,31 @@ const PageComponents = {
   Page5: React.lazy(() => import("./components/pages/Page5")),
 };
 
+const ErrorBoundary = ({ children }) => {
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    window.onerror = () => setHasError(true);
+    return () => (window.onerror = null);
+  }, []);
+
+  if (hasError) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 text-gray-500">
+        <h1 className="text-2xl mb-4">Something went wrong</h1>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-gradient-to-r from-[#804D3E] to-[#7E497D] rounded-lg"
+        >
+          Reload Page
+        </button>
+      </div>
+    );
+  }
+
+  return children;
+};
+
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [showContactButton, setShowContactButton] = useState(true);
@@ -92,45 +117,46 @@ const App = () => {
   }
 
   return (
-    <div className="bg-gray-950 select-none flex justify-center items-center min-h-screen w-full overflow-hidden">
-      {loading ? (
-        <div className="flex flex-col items-center gap-4">
-          <WelcomeText />
-          <BarLoader loading={loading} size={30} color="#99a1af" />
-          <p className="text-gray-500 text-bold mt-2">npm run dev....</p>
-        </div>
-      ) : (
-        <Suspense
-          fallback={
-            <div className="flex justify-center items-center min-h-screen">
-              <BarLoader color="#99a1af" />
-            </div>
-          }
-        >
-          <div className="w-full">
-            <Nav />
-            <div className="flex flex-col">
-              {Object.entries(pages).map(([name, Component]) => (
-                <div key={name} data-component={name}>
-                  <Suspense
-                    fallback={
-                      <div className="min-h-screen flex items-center justify-center">
-                        <BarLoader color="#99a1af" size={15} />
-                      </div>
-                    }
-                  >
-                    <Component />
-                  </Suspense>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={() =>
-                document
-                  .getElementById("contact")
-                  .scrollIntoView({ behavior: "smooth" })
-              }
-              className={`fixed bottom-6 right-6 z-50 px-8 py-3 rounded-full font-Mogra
+    <ErrorBoundary>
+      <div className="bg-gray-950 select-none flex justify-center items-center min-h-screen w-full overflow-hidden">
+        {loading ? (
+          <div className="flex flex-col items-center gap-4">
+            <WelcomeText />
+            <BarLoader loading={loading} size={30} color="#99a1af" />
+            <p className="text-gray-500 text-bold mt-2">npm run dev....</p>
+          </div>
+        ) : (
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center min-h-screen">
+                <BarLoader color="#99a1af" />
+              </div>
+            }
+          >
+            <div className="w-full">
+              <Nav />
+              <div className="flex flex-col">
+                {Object.entries(pages).map(([name, Component]) => (
+                  <div key={name} data-component={name}>
+                    <Suspense
+                      fallback={
+                        <div className="min-h-screen flex items-center justify-center">
+                          <BarLoader color="#99a1af" size={15} />
+                        </div>
+                      }
+                    >
+                      <Component />
+                    </Suspense>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("contact")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+                className={`fixed bottom-6 right-6 z-50 px-8 py-3 rounded-full font-Mogra
                 text-gray-950 bg-gradient-to-r from-[#804D3E] to-[#7E497D]
                 transform transition-all duration-500 ease-in-out
                 hover:scale-105 hover:shadow-lg hover:from-[#7E497D] hover:to-[#804D3E]
@@ -140,13 +166,14 @@ const App = () => {
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10 pointer-events-none"
                 }`}
-            >
-              Contact Me
-            </button>
-          </div>
-        </Suspense>
-      )}
-    </div>
+              >
+                Contact Me
+              </button>
+            </div>
+          </Suspense>
+        )}
+      </div>
+    </ErrorBoundary>
   );
 };
 
