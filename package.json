@@ -9,7 +9,6 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    // "deploy": "npm run build && npx vercel --prod",
     "predeploy": "npm run build",
     "deploy":" gh-pages -d dist"
   },

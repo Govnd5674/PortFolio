@@ -9,11 +9,11 @@ import { loadComponent } from "./utils/componentLoader";
 
 // Dynamic imports with chunk names
 const PageComponents = {
-  Page1: React.lazy(() => loadComponent("Page1")),
-  Page2: React.lazy(() => loadComponent("Page2")),
-  Page3: React.lazy(() => loadComponent("Page3")),
-  Page4: React.lazy(() => loadComponent("Page4")),
-  Page5: React.lazy(() => loadComponent("Page5")),
+  Page1: React.lazy(() => import("./components/pages/Page1")),
+  Page2: React.lazy(() => import("./components/pages/Page2")),
+  Page3: React.lazy(() => import("./components/pages/Page3")),
+  Page4: React.lazy(() => import("./components/pages/Page4")),
+  Page5: React.lazy(() => import("./components/pages/Page5")),
 };
 
 const App = () => {

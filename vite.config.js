@@ -56,7 +56,6 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
       },
     }),
-    
     viteImagemin({
       gifsicle: {
         optimizationLevel: 7,
@@ -85,56 +84,16 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/PortFolio",
+  base: "/",
   build: {
     outDir: "dist",
     assetsDir: "assets",
     sourcemap: false,
     minify: "terser",
     cssMinify: true,
-    chunkSizeWarningLimit: 1000, // Updated warning limit
     rollupOptions: {
-      external: [/\.glb$/], // Exclude GLB files from being processed
       output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (id.includes("react")) {
-              if (id.includes("react-dom")) return "react-dom";
-              return "react-core";
-            }
-            if (id.includes("three")) {
-              if (id.includes("drei")) return "three-drei";
-              if (id.includes("fiber")) return "three-fiber";
-              return "three-core";
-            }
-            if (id.includes("framer-motion")) return "animations-framer";
-            if (id.includes("@react-spring")) return "animations-spring";
-            if (id.includes("gsap")) return "animations-gsap";
-            return "vendor";
-          }
-          if (id.includes("pages/")) {
-            return `page-${id.split("pages/")[1].split(".")[0].toLowerCase()}`;
-          }
-        },
-        inlineDynamicImports: false,
-        experimentalMinChunkSize: 10000,
-      },
-    },
-    target: "esnext",
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ["console.log"],
-        passes: 3,
-        dead_code: true,
-        unsafe: true,
-      },
-      mangle: {
-        toplevel: true,
-        properties: {
-          regex: /^_/,
-        },
+        inlineDynamicImports: true,
       },
     },
   },

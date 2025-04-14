@@ -20,14 +20,14 @@ const Page2 = () => {
         astroRef.current,
         {
           x: isMobile ? "100%" : "100%",
-          y: isMobile ? "-100%" : "-50%", // Adjusted starting Y position for mobile
+          y: isMobile ? "-100%" : "-50%", 
           scale: isMobile ? 0.05 : 0.2,
           opacity: 0,
           rotate: isMobile ? 30 : 45,
         },
         {
           x: isMobile ? "5%" : isTablet ? "10%" : "20%",
-          y: isMobile ? "-170%" : isTablet ? "-60%" : "-100%", // Adjusted final Y position for mobile
+          y: isMobile ? "-170%" : isTablet ? "-60%" : "-150%", 
           scale: isMobile ? 1.5 : isTablet ? 1.2 : 2,
           rotate: 0,
           opacity: 1,
@@ -139,6 +139,14 @@ const Page2 = () => {
         </div>
       </section>
     </div>
+  );
+};
+
+const Skills = () => {
+  return (
+    <section id="skills" className="min-h-screen">
+      {/* ...existing code... */}
+    </section>
   );
 };
 
