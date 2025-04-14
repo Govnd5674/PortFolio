@@ -84,14 +84,14 @@ export default defineConfig({
       },
     }),
   ],
-  base: '',  // Change from "/" to empty string
+  base: "/",
   build: {
     outDir: "dist",
     assetsDir: "assets",
-    sourcemap: true, // Enable sourcemaps for debugging
+    sourcemap: false,
     minify: "terser",
     cssMinify: true,
-    chunkSizeWarningLimit: 5000, // 5MB chunk size limit
+    chunkSizeWarningLimit: 10000, 
     rollupOptions: {
       input: {
         main: "./index.html",
@@ -106,15 +106,8 @@ export default defineConfig({
           return `assets/[name]-[hash][extname]`;
         },
         entryFileNames: "assets/[name]-[hash].js",
-        inlineDynamicImports: true, // Change to true for single bundle
-        manualChunks: undefined // Remove manual chunks
+        inlineDynamicImports: true,
       },
-    },
-    assetsInlineLimit: 4096,
-  },
-  resolve: {
-    alias: {
-      "@assets": "/src/assets",
     },
   },
   optimizeDeps: {

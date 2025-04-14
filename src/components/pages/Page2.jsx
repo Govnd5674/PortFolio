@@ -15,19 +15,18 @@ const Page2 = () => {
       const isMobile = window.innerWidth < 768;
       const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
 
-      // Astronaut animation with adjusted mobile position
       gsap.fromTo(
         astroRef.current,
         {
           x: isMobile ? "100%" : "100%",
-          y: isMobile ? "-100%" : "-50%", 
+          y: isMobile ? "-100%" : "-50%",
           scale: isMobile ? 0.05 : 0.2,
           opacity: 0,
           rotate: isMobile ? 30 : 45,
         },
         {
           x: isMobile ? "5%" : isTablet ? "10%" : "20%",
-          y: isMobile ? "-170%" : isTablet ? "-60%" : "-150%", 
+          y: isMobile ? "-170%" : isTablet ? "-60%" : "-150%",
           scale: isMobile ? 1.5 : isTablet ? 1.2 : 2,
           rotate: 0,
           opacity: 1,
@@ -42,11 +41,10 @@ const Page2 = () => {
         }
       );
 
-      // Text content animation with adjusted mobile position
       gsap.fromTo(
         textRef.current,
         {
-          y: isMobile ? 30 : 50, // Reduced starting offset for mobile
+          y: isMobile ? 30 : 50, 
           opacity: 0,
         },
         {
@@ -55,7 +53,7 @@ const Page2 = () => {
           duration: isMobile ? 0.5 : 0.8,
           scrollTrigger: {
             trigger: textRef.current,
-            start: isMobile ? "top 90%" : "top 80%", // Moved up trigger point for mobile
+            start: isMobile ? "top 90%" : "top 80%", 
             end: isMobile ? "top 70%" : "top 60%",
             toggleActions: "play none none reverse",
           },
@@ -120,33 +118,25 @@ const Page2 = () => {
               frontend design and smart backend intelligence.
             </p>
           </ScrollReveal>
-            <div className="block md:hidden mt-8 mb-4">
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("contact")
-                    .scrollIntoView({ behavior: "smooth" })
-                }
-                className="px-8 py-3 rounded-full font-Mogra text-gray-950 
+          <div className="block md:hidden mt-8 mb-4">
+            <button
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+              className="px-8 py-3 rounded-full font-Mogra text-gray-950 
                   bg-gradient-to-r from-[#804D3E] to-[#7E497D]
                   transform transition-all duration-300 ease-in-out
                   hover:scale-105 hover:shadow-lg hover:from-[#7E497D] hover:to-[#804D3E]
                   active:scale-95"
-              >
-                Contact Me
-              </button>
-            </div>
+            >
+              Contact Me
+            </button>
+          </div>
         </div>
       </section>
     </div>
-  );
-};
-
-const Skills = () => {
-  return (
-    <section id="skills" className="min-h-screen">
-      {/* ...existing code... */}
-    </section>
   );
 };
 

@@ -30,14 +30,14 @@ const Page3 = () => {
   ];
 
   return (
-    <div className="relative h-[100vh] bg-gray-950 overflow-hidden">
+    <section id="skills" className="relative h-[100vh] bg-gray-950 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-950 via-transparent to-gray-950 z-10" />
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-gray-950 to-transparent z-10" />
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-gray-950 to-transparent z-10" />
       </div>
       <GridMotion items={items} />
-    </div>
+    </section>
   );
 };
 
