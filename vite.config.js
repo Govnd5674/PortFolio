@@ -56,6 +56,7 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
       },
     }),
+    
     viteImagemin({
       gifsicle: {
         optimizationLevel: 7,
@@ -84,7 +85,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/",
+  base: "/PortFolio",
   build: {
     outDir: "dist",
     assetsDir: "assets",
