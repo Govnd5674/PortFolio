@@ -15,7 +15,7 @@ const Nav = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full py-2 md:py-4 select-none z-50 font-Mogra bg-gray-950/50 backdrop-blur-sm">
+    <header className="absolute top-0 w-full py-2 md:py-4 select-none z-50 font-Mogra bg-gray-950/50">
       <nav className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 w-full">
         <div className="tracking-in-contract-bck flex items-center justify-center h-12 md:h-16">
           <div className="flex flex-wrap md:flex-nowrap justify-center gap-4 sm:gap-6 md:gap-20 lg:gap-40 text-sm md:text-xl text-gray-600">
